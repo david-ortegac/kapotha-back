@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
-            $table->foreignId('userTypes_id')->references('id')->on('user_types');
+            $table->foreignid('userTypes_id')->references('id')->on('user_types');
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

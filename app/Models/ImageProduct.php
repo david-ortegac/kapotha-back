@@ -5,22 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Category
+ * Class ImageProduct
  *
  * @property $id
- * @property $name
+ * @property $products_id
+ * @property $url_img
  * @property $created_at
  * @property $updated_at
  *
- * @property Product[] $products
+ * @property Product $product
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Category extends Model
+class ImageProduct extends Model
 {
     
     static $rules = [
-		'name' => 'required',
+		'products_id' => 'required',
+		'url_img' => 'required',
     ];
 
     protected $perPage = 20;
@@ -30,14 +32,14 @@ class Category extends Model
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['products_id','url_img'];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function products()
+    public function product()
     {
-        return $this->hasMany('App\Models\Product', 'categories_id', 'id');
+        return $this->hasOne('App\Models\Product', 'id', 'products_id');
     }
     
 

@@ -12,9 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('clients', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('clients');
-            $table->foreignId('cities_id')->references('id')->on('cities');
             $table->string('phone');
             $table->string('address');
             $table->boolean('whatsapp','1')->default('0');

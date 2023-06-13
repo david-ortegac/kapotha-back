@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
-            $table->foreignId('categories_id')->references('id')->on('categories');
+            $table->foreignid('categories_id')->references('id')->on('categories');
             $table->string('name');
             $table->string('details');
             $table->timestamps();
