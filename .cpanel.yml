@@ -1,0 +1,5 @@
+deployment:
+    tasks:
+        - export DEPLOYPATH=[path]
+        - /usr/local/bin/composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
+        
